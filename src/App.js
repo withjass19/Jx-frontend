@@ -1,16 +1,16 @@
+import Registration from './Page';
 import './index.css'
-import Nav from './components/Nav/Nav';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Section from './components/Section/Section';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <Nav/>
-      <Header/>
-      <Section/>
-      <Footer/>
+      <BrowserRouter>
+        <Routes>
+            <Route path="/registration" element={<Registration/>}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
