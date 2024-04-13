@@ -300,7 +300,7 @@ export default function Form() {
           <Option value="USD">USD</Option>
           <Option value="USDT">USDT</Option>
         </Select>
-        <div className="flex justify-center items-center pt-3">
+        <div className="flex justify-center items-center pt-1">
           <Button variant="filled" onClick={handleRegister}>
             Register
           </Button>
