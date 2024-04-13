@@ -26,6 +26,7 @@ export default function Form() {
   const [currency, setCurrency] = useState("");
   const [username, setUsername] = useState("");
   const { name, flags, countryCallingCode } = countries[country];
+  const [disabled, setDisabled] = useState(true);
 
   const [error, setError] = useState({
     usernameError: false,
@@ -90,6 +91,7 @@ export default function Form() {
       };
       const response = await axios.post("http://localhost:5000/api/public/sms/send", dataToSend);
       console.log("Registering user...",response);
+      setDisabled(false);
     } catch (error) {
       console.log(error);
     }
@@ -177,8 +179,8 @@ export default function Form() {
   };
   return (
     <div className="px-0 lg:px-14 sm:p-0">
-      <form className="grid gap-4 bg-white px-10 rounded-none md:px-14 sm:p-0 py-8 md:rounded-2xl">
-        <p className="text-2xl font-bold pb-2.5 pt-3">Join Us</p>
+      <form className="grid gap-4 bg-white px-10 rounded-none md:px-14 sm:p-0 py-8 md:py-8 md:rounded-2xl">
+        <p className="text-2xl font-bold">Join Us</p>
         {/* <Jass/> */}
         <Input color="black" label="Username" value={username} onChange={handleUsernameChange} error= {error.usernameError} />
         <div>
@@ -288,6 +290,7 @@ export default function Form() {
           onChange={handleSmsCodeChange}
           value={smsCode}
           error={error.smsCodeError}
+          disabled={disabled}
         />
         <Select
           label="Currency"
